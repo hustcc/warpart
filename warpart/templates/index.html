@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform " />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="唐诗宋词,经典诗歌,{{poet.name}},{{poetry.title}}" />
+    <meta name="description" content="唐诗宋词,经典诗歌,{{poetry.title}},{{poetry.content}}" />
+    <link rel="Bookmark" href="/static/res/img/logo.png" />
+    <link rel="shortcut icon" href="/static/res/img/logo.png" />
+    <link rel="alternate" href="http://warpart.com" hreflang="zh" />
+    <title>{{poetry.title}} | 唐诗宋词</title>
+    <link rel='stylesheet' href='/static/res/css/common.css' type='text/css' />
+    <script type="text/javascript" src="/static/res/js/share.js"></script>
+    <style>
+    	#content .poetry div {
+    		text-align: center;
+    		font-size: 16px;
+    	}
+    	#content .poetry div.poet_name {
+    		text-align: right;
+    		padding-right:20px
+    	}
+    </style>
+</head>
+<body>
+  <div itemscope itemtype="http://schema.org/Article" id="main" class="clearfix">
+    <div id="content">
+      <div class="panel">
+        <div class="body clearfix">
+          <a class="logo left" href="/" title="唐诗宋词">唐诗宋词</a>
+          <div>
+            <h1>
+              <a itemprop="url" href="/{{poetry.id}}.html">
+                <span itemprop="name">{{poet.name}} 之 《{{poetry.title}}》</span> | <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">唐诗宋词</span></span>
+              </a>
+            </h1>
+            <p>我们不生产诗歌，我们只是经典诗歌的搬运工</p>
+          </div>
+        </div>
+      </div>
+      <p class="tips">如果喜欢这首诗，别忘了分享给你的朋友哦！本站目前搬运  <strong>{{total_poetry}}</strong>  篇诗歌，涉及诗人 <strong>{{total_poet}}</strong> 位。</p>
+      <div class="panel open">
+        <div class="body">
+          <span itemprop="articleBody">
+            <div class="poetry">
+            	<div class="poetry_title">{{poetry.title}}</div>
+            	<div class="poet_name">——  {{poet.name}}</div>
+              {% for p in poetry.content|poetry_content %}
+              	<div>{{p}}</div>
+              {% endfor %}
+            </div>
+          </span>
+        </div>
+        <div class="footer clearfix">
+          <script>
+          share_output(location.origin + '/{{poetry.id}}.html', '{{poet.name}} 之 《{{poetry.title}}》', '{{poetry.content}}');
+          </script>
+        </div>
+      </div>
+      <ul class="panel nav">
+      	{% if prev %}
+      		<li><a href="{{prev}}.html" rel="prev">&laquo;上一篇 </a> </li>
+      	{% else %}
+      		<li>没有了 </li>
+      	{% endif %}
+        <li class="home"><a href="/ " rel="home ">返回首页</a></li>
+        {% if next %}
+      		<li><a href="{{next}}.html" rel="next">&laquo;下一篇 </a> </li>
+      	{% else %}
+      		<li>没有了 </li>
+      	{% endif %}
+      </ul>
+    </div><!-- #content -->
+    <div id="sidebar"> 
+      <div class="panel text-center">
+        <div class="heading " style="float: right; width: 139px; height: 132px; border-width: 0 0 0 1px; ">
+          <p style=" margin: 5px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd; ">&lt;&lt; 微信公众号</p>
+          <p>扫一扫关注公众号</p>
+          <p>“在线工具”</p>
+        </div>
+        <div class="body " style="height:120px ">
+          <img class="qrcode" itemprop="image" width="120" height="120" src="/static/res/img/atool-org-weixin.jpg " />
+        </div>
+      </div>
+      <!-- <div id="link " >
+        <p style=" margin: 5px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd; ">友情推荐网站</p>
+        <ul>
+          <li>
+            <a href="http://www.atool.org/ " target="_blank " title="最全面、最干净的在线工具 ">在线工具</a>、
+          </li>
+        </ul>
+      </div> -->
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- adapte_ad -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-7292810486004926"
+			     data-ad-slot="9220497478"
+			     data-ad-format="auto"></ins>
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-7292810486004926"
+			     data-ad-slot="9220497478"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+    </div>
+  </div><!-- #main -->
+  <div id="share_weixin_box"></div>
+  <div style="display: none;"><script src="http://s4.cnzz.com/stat.php?id=1253879039&web_id=1253879039 " language="JavaScript "></script></div>
+</body>
+</html>
