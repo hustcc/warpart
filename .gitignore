@@ -59,3 +59,4 @@ target/
 .project
 .settings
 tests/_*
+tang.sql
