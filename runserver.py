@@ -10,11 +10,11 @@ from warpart import app
 # monkey.patch_all()  # patch
 
 
-def runserver(port=10028):
-    app.run('0.0.0.0', port, debug=True, threaded=False)
+def runserver(port=10028, debug=False):
+    app.run('0.0.0.0', port, debug=debug, threaded=False)
     # http_server = WSGIServer(('0.0.0.0', port), app)
     # http_server.serve_forever()
 
 
 if __name__ == '__main__':
-    runserver()
+    runserver(debug=True)
