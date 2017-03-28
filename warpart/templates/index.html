@@ -12,7 +12,7 @@
     <link rel="Bookmark" href="/static/res/img/logo.png" />
     <link rel="shortcut icon" href="/static/res/img/logo.png" />
     <link rel="alternate" href="http://warpart.com" hreflang="zh" />
-    <title>{{poetry.title}} | 唐诗宋词</title>
+    <title>《{{poetry.title}}》  —— {{poet.name}}</title>
     <link rel='stylesheet' href='/static/res/css/common.css' type='text/css' />
     <script type="text/javascript" src="/static/res/js/share.js"></script>
     <style>
@@ -31,24 +31,24 @@
     <div id="content">
       <div class="panel">
         <div class="body clearfix">
-          <a class="logo left" href="/" title="唐诗宋词">唐诗宋词</a>
+          <a class="logo left" href="/" title="唐诗宋词"></a>
           <div>
             <h1>
               <a itemprop="url" href="/{{poetry.id}}.html">
-                <span itemprop="name">{{poet.name}} 之 《{{poetry.title}}》</span> | <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">唐诗宋词</span></span>
+                <span itemprop="name">{{poet.name}} 《{{poetry.title}}》</span><span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><span style="display:none" itemprop="name">唐诗宋词</span></span>
               </a>
             </h1>
-            <p>我们不生产诗歌，我们只是经典诗歌的搬运工</p>
+            <p>我们不生产诗歌，我们只是随机给您推送经典诗歌</p>
           </div>
         </div>
       </div>
-      <p class="tips">如果喜欢这首诗，别忘了分享给你的朋友哦！本站目前搬运  <strong>{{total_poetry}}</strong>  篇诗歌，涉及诗人 <strong>{{total_poet}}</strong> 位。</p>
+      <p class="tips">如果喜欢这首诗，别忘了分享给你的朋友哦！</p>
       <div class="panel open">
         <div class="body">
           <span itemprop="articleBody">
             <div class="poetry">
             	<div class="poetry_title">{{poetry.title}}</div>
-            	<div class="poet_name">——  {{poet.name}}</div>
+            	<div class="poet_name">{{poet.name}}</div>
               {% for p in poetry.content|poetry_content %}
               	<div>{{p}}</div>
               {% endfor %}
@@ -69,7 +69,7 @@
       	{% endif %}
         <li class="home"><a href="/ " rel="home ">返回首页</a></li>
         {% if next %}
-      		<li><a href="{{next}}.html" rel="next">&laquo;下一篇 </a> </li>
+      		<li><a href="{{next}}.html" rel="next">下一篇 &raquo;</a> </li>
       	{% else %}
       		<li>没有了 </li>
       	{% endif %}
@@ -86,6 +86,7 @@
           <img class="qrcode" itemprop="image" width="120" height="120" src="/static/res/img/atool-org-weixin.jpg " />
         </div>
       </div>
+      <p class="tips">本站目前包含 <strong>{{total_poetry}}</strong> 篇诗歌，诗人 <strong>{{total_poet}}</strong> 位。</p>
       <!-- <div id="link " >
         <p style=" margin: 5px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd; ">友情推荐网站</p>
         <ul>

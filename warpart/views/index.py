@@ -6,7 +6,8 @@ Created on 2016-10-20
 '''
 
 from warpart import app
-from warpart.database.model import Poetry
+from warpart.database.model import Poetry, Poet
+from warpart.util import date_util
 import flask
 import random
 
@@ -14,9 +15,9 @@ import random
 # index
 @app.route('/', methods=['GET'])
 def index():
+    max_id = date_util.max_id()
     # get random id
-    total_poetry = Poetry.query.count()
-    r = random.uniform(1, total_poetry)
+    r = random.uniform(1, max_id)
 
     r = Poetry.query.filter(Poetry.id < r).order_by(Poetry.id.desc()).first()
     r = r and r.id or 1
@@ -26,23 +27,33 @@ def index():
 # poetry_id
 @app.route('/<poetry_id>.html', methods=['GET'])
 def poetry_page(poetry_id):
+    max_id = date_util.max_id()
     # poetry_id should be number
     if not str(poetry_id).isdigit():
+        return 'intercepted.'
+
+    try:
+        poetry_id = int(poetry_id)
+    except:
+        return 'intercepted.'
+
+    if poetry_id > max_id:
         return 'intercepted.'
 
     poetry = Poetry.query.get(poetry_id)
     if not poetry:
         return 'intercepted.'
+
     poet = poetry.poet
     # stat
-    total_poetry = Poetry.query.count()
-    total_poet = Poetry.query.count()
+    total_poetry = Poetry.query.filter(Poetry.id <= max_id).count()
+    total_poet = Poet.query.count()
     # prev, next
-    prev = Poetry.query.filter(Poetry.id < poetry.id) \
+    prev = Poetry.query.filter(Poetry.id < poetry.id, Poetry.id <= max_id) \
                  .order_by(Poetry.id.desc()).first()
     prev = prev and prev.id or None
 
-    next = Poetry.query.filter(Poetry.id > poetry.id) \
+    next = Poetry.query.filter(Poetry.id > poetry.id, Poetry.id <= max_id) \
                  .order_by(Poetry.id.asc()).first()
     next = next and next.id or None
 
