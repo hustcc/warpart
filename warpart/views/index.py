@@ -58,3 +58,15 @@ def poetry_page(poetry_id):
                                  total_poetry=total_poetry,
                                  prev=prev,
                                  next=next)
+
+
+@app.route('/sitemap.xml', methods=['GET'])
+@app.route('/sitemap.html', methods=['GET'])
+def sitemap():
+    max_id = date_util.max_id()
+    poetries = Poetry.query.filter(Poetry.id <= max_id) \
+                     .order_by(Poetry.id.desc()).all()
+    sitemap_xml = flask.render_template('sitemap.xml', poetries=poetries)
+    response = app.make_response(sitemap_xml)
+    response.headers["Content-Type"] = "application/xml"
+    return response

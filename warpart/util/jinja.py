@@ -24,7 +24,13 @@ def poetry_datetime(poetry_id):
     return date_util.poetry_datetime(poetry_id)
 
 
+def poetry_sitemap_datetime(poetry_id):
+    return date_util.poetry_datetime(poetry_id) \
+                    .strftime('%Y-%m-%dT%H:%M:%S+08:00')
+
+
 app.jinja_env.filters.update({
     'poetry_content': poetry_content,
-    'poetry_datetime': poetry_datetime
+    'poetry_datetime': poetry_datetime,
+    'poetry_sitemap_datetime': poetry_sitemap_datetime
 })

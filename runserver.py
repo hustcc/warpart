@@ -11,7 +11,7 @@ from warpart import app
 
 
 def runserver(port=10028):
-    app.run('0.0.0.0', port, debug=False, threaded=False)
+    app.run('0.0.0.0', port, debug=True, threaded=False)
     # http_server = WSGIServer(('0.0.0.0', port), app)
     # http_server.serve_forever()
 
