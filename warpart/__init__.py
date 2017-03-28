@@ -6,10 +6,6 @@ Created on 2015年6月16日
 '''
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from gevent import monkey
-
-
-monkey.patch_all()  # patch
 
 
 # 版本号
