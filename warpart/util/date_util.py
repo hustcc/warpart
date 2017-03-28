@@ -16,5 +16,11 @@ def max_id():
     return dtd // 1800
 
 
+def poetry_datetime(poetry_id):
+    start = datetime.datetime(2017, 3, 28, 0, 0, 0, 0)
+    return start + datetime.timedelta(seconds=poetry_id * 1800)
+
+
 if __name__ == '__main__':
     print(max_id())
+    print(poetry_datetime(21))

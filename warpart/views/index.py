@@ -9,19 +9,13 @@ from warpart import app
 from warpart.database.model import Poetry, Poet
 from warpart.util import date_util
 import flask
-import random
 
 
 # index
 @app.route('/', methods=['GET'])
 def index():
     max_id = date_util.max_id()
-    # get random id
-    r = random.uniform(1, max_id)
-
-    r = Poetry.query.filter(Poetry.id < r).order_by(Poetry.id.desc()).first()
-    r = r and r.id or 1
-    return poetry_page(r)
+    return poetry_page(max_id)
 
 
 # poetry_id

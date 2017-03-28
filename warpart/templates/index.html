@@ -56,6 +56,7 @@
           </span>
         </div>
         <div class="footer clearfix">
+        	<a href="/{{poetry.id}}.html">发布于 {{poetry.id|poetry_datetime}}</a>
           <script>
           share_output(location.origin + '/{{poetry.id}}.html', '{{poet.name}} 之 《{{poetry.title}}》', '{{poetry.content}}');
           </script>
@@ -87,6 +88,7 @@
         </div>
       </div>
       <p class="tips">本站目前包含 <strong>{{total_poetry}}</strong> 篇诗歌，诗人 <strong>{{total_poet}}</strong> 位。</p>
+      <p class="tips">网站每隔 30 分钟自动新增一篇。</p>
       <!-- <div id="link " >
         <p style=" margin: 5px 0; padding-bottom: 3px; border-bottom: 1px solid #ddd; ">友情推荐网站</p>
         <ul>

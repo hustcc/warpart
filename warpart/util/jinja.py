@@ -5,6 +5,7 @@ Created on Mar 27, 2017
 @author: hustcc
 '''
 from warpart import app
+from warpart.util import date_util
 import sys
 
 
@@ -19,4 +20,11 @@ def poetry_content(content):
     return content
 
 
-app.jinja_env.filters.update({'poetry_content': poetry_content})
+def poetry_datetime(poetry_id):
+    return date_util.poetry_datetime(poetry_id)
+
+
+app.jinja_env.filters.update({
+    'poetry_content': poetry_content,
+    'poetry_datetime': poetry_datetime
+})
