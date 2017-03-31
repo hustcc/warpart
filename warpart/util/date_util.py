@@ -13,7 +13,7 @@ def max_id():
     # datetime timedelta
     dtd = (now - start).total_seconds()
     # 每隔 30 分钟一首
-    return dtd // 1800
+    return int(dtd) // 1800
 
 
 def poetry_datetime(poetry_id):
